@@ -124,7 +124,7 @@ RUN --mount=type=bind,target=.,rw \
     find . -regex "${LICENSE_FILES}" | cpio -pdm /out
 
 FROM scratch AS license-update
-COPY --from=set /out /
+FROM algo AS set
 
 FROM base AS license-validate
 ARG LICENSE_FILES
